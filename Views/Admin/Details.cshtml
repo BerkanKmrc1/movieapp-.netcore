@@ -1,0 +1,42 @@
+@model Movie //movie liste halinde gelmiyo dikkat normal model olarak geliyo çünkü details sayfasında
+<!-- bir foreach kullanmıyoruz yani birden fazla veri ekrana basmıyoruz yani bir liste gerekmiyor
+sadece seçilen filmin detaylarının gözüktüğü o filme ait tek bir liste verisinin olduğu bir view bu-->
+
+<div class="row">
+    <div class="col-md-3">
+        @* @Html.Partial("_menu", Model.Categories) *@<!-- Partial viewimi yorum satırına aldım yani iptal ettim
+        artık böyle kullanmıcam alttaki gibi kullanıcam-->
+       @await Component.InvokeAsync("CategoryMenu") <!--Oluşturduğum Komponentimi burada kullandım 
+        await komutuyla ve ınvokeasync komutuyla asenkron olarak çalışır category menu component view imin içinde
+        bulunduğu klasörün adı buarada :) aynısını indexdede yaptım. Hatta bunu direk layoutda tanımlarsak
+        bu layoutu kullanan bütün viewlerde bu menü içeriği gelir yorum satırına alıyorum bu kodu
+        layouta atıyorum attığımda sıkıntı oldu şuanlık burda kullancam-->
+    </div>
+    <div class="col-md-9">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row no-gutter">
+                    <div class="col-md-4">
+                        <img src="/lib//img/@Model.ImageUrl" class="card-img">
+                    </div>
+              <div class="col-md-8">
+                    <h5 class="card-title">
+                    <a href="/Admin/Details/@Model.Id">@Model.CourseName</a>
+                    </h5>
+                    <p class="card-text">
+                    @Model.CourseCode
+                    </p>
+                    <p class="card-text">
+                    <small class="text-muted">3 days ago</small>
+                    </p>
+               </div>
+                 </div>
+                
+            </div>
+    
+        
+        
+        </div>
+    </div>
+</div>
+ 

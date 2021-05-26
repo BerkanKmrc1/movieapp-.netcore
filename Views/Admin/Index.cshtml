@@ -1,0 +1,13 @@
+@model IEnumerable<Movie>
+<!-- bana sayfa olarak bu geliyo ben partial viewler ile diğer viewlerin verisini bu indexe getirebiliyorum-->
+<div class="row">
+    <div class="col-mod-3">
+        @* @Html.Partial("_menu",Model.Categories) *@
+        @await Component.InvokeAsync("CategoryMenu") <!---asenkron olarak çalışır bunuda yoruma alıyorum layoutta
+        var çünkü artık şuanlık burda kullancam bir problem oluyor--> 
+    </div>
+    <div class="col-md-9">
+        @Html.Partial("_movies",Model)<!-- burayada dikkat modelin içindeki movies ile geliyo veriler
+        bu model productcategorymodel classın modelı burdaki Movies propertysi geliyo bize-->
+    </div>
+</div>
